@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .title {
+                font-size: 50px;
+                font-family: '궁서체';
+                color: cadetblue;
+            }
+
+            #title {
+                font-size: 30px;
+                font-family: '궁서체';
+                color: cornflowerblue;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 class="title">HTML BASIC</h1>
+        <h1>HTML BASIC</h1>
+        <h1 class="title">HTML BASIC</h1>
+        <h1 id="title">HTML BASIC</h1>
+        <h1>HTML BASIC</h1>
+        <h1>HTML BASIC</h1>
+        <button type="button" onclick="changeContent()">내용 바꾸기</button>
+        <script>
+            function changeContent() {
+                document.getElementById('title').innerText = 'HTML 기본';
+            }
+        </script>
+    </body>
+</html>
