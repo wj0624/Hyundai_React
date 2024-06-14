@@ -90,3 +90,8 @@ function circle1({ a = { x: 0, y: 0 }, r = 0 } = {}) {
     console.log(a.x, a.y, r);
 }
 circle1();
+
+// 즉시 실행 함수
+(function add(a, b) {
+    console.log(a + b);
+})(1, 2);

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script
+            src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios@1.7.2/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <h1 id="msg"></h1>
+        <script>
+            let result = '';
+            $.get('msg.json', {}, function (data) {
+                result = data;
+                console.log('1.', result);
+            });
+            console.log('2.', result);
+
+            let result2 = '';
+            $.get('msg.json', {})
+                .done(function (data) {
+                    result2 = data;
+                    document.querySelector('#msg').innerHTML = result2.text;
+                    console.log('3.', result2);
+                })
+                .done(function () {
+                    console.log('4.', result2);
+                })
+                .fail(function () {
+                    console.log('5. 에러', data);
+                });
+            fetch('msg.json', { method: 'GET' })
+                .then((response) => {
+                    if (response.ok) return response.json();
+                })
+                .then((data) => {
+                    console.log('6.', data);
+                })
+                .catch(function (error) {
+                    console.log('7. 에러', error);
+                });
+
+            axios
+                .get('msg.json', {})
+                .then((data) => {
+                    console.log('8.', data);
+                })
+                .catch(function (error) {
+                    console.log('9. 에러', error);
+                });
+
+            axios({
+                method: 'get',
+                url: 'msg.json',
+                data: {
+                    param: '1234',
+                },
+            })
+                .then((data) => {
+                    console.log('10.', data);
+                })
+                .catch(function (error) {
+                    console.log('11. 에러', error);
+                });
+        </script>
+    </body>
+</html>
