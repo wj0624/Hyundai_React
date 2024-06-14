@@ -16,11 +16,17 @@ function App() {
     `;
 
     const ReactButton = (props) => {
-        return <button>{props.children}</button>;
+        console.log('props', props);
+        return <button className={props.className}>{props.children}</button>;
     };
 
     const ReactLargeButton = styled(ReactButton)`
         font-size: 50px;
+    `;
+
+    const PrimaryButton = styled.button`
+        color: ${(props) => (props.primary ? 'white' : 'black')};
+        background-color: ${(props) => (props.primary ? 'blue' : 'gray')};
     `;
     return (
         <div>
@@ -28,6 +34,8 @@ function App() {
             <LargeButton>Large</LargeButton>
             <ReactButton>React</ReactButton>
             <ReactLargeButton>React Large</ReactLargeButton>
+            <PrimaryButton>Normal</PrimaryButton>
+            <PrimaryButton primary>Primary</PrimaryButton>
         </div>
     );
 }
